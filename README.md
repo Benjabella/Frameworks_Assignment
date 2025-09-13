@@ -45,20 +45,20 @@ Launch a web-based dashboard with:
 ## 📂 File Structure
 | File | Purpose |
 |------|---------|
-| `app.py` | Streamlit web application |
-| `main.py` | Batch processing and analysis |
-| `data_cleaning.py` | Data cleaning utilities |
-| `preprocess_data.py` | Data preprocessing pipeline |
-| `analysis_visualization.py` | Visualization functions |
+| `src/app/app.py` | Streamlit web application |
+| `src/main.py` | Batch processing and analysis |
+| `src/data/data_cleaning.py` | Data cleaning utilities |
+| `src/data/preprocess_data.py` | Data preprocessing pipeline |
+| `src/analysis/analysis_visualization.py` | Visualization functions |
 | `requirements.txt` | Python dependencies |
 
 ## 📊 Generated Visualizations
-1. `publications_by_year.png` - Annual publication trends
-2. `top_journals.png` - Top publishing journals
-3. `top_title_words.png` - Most frequent title words
-4. `abstract_length_distribution.png` - Abstract word count distribution
-5. `abstract_presence.png` - Papers with/without abstracts
-6. `sources_distribution.png` - Data source distribution
+1. `reports/publications_by_year.png` - Annual publication trends
+2. `reports/top_journals.png` - Top publishing journals
+3. `reports/top_title_words.png` - Most frequent title words
+4. `reports/abstract_length_distribution.png` - Abstract word count distribution
+5. `reports/abstract_presence.png` - Papers with/without abstracts
+6. `reports/sources_distribution.png` - Data source distribution
 
 ## 📦 Dependencies
 - pandas

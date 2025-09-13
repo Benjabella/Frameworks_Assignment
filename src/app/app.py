@@ -6,6 +6,7 @@ import seaborn as sns
 import re
 from collections import Counter
 import numpy as np
+import os
 
 # Set page configuration
 st.set_page_config(
@@ -20,10 +21,10 @@ def load_optimized_data(use_sample=False):
     """Load optimized data format"""
     try:
         if use_sample:
-            df = pd.read_parquet('metadata_sample.parquet')
+            df = pd.read_parquet('data/metadata_sample.parquet')
             st.sidebar.info("📊 Using sample data (10k records)")
         else:
-            df = pd.read_parquet('metadata_optimized.parquet')
+            df = pd.read_parquet('data/metadata_optimized.parquet')
             st.sidebar.info("📊 Using full dataset")
         return df
     except FileNotFoundError:

@@ -5,13 +5,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from collections import Counter
 import re
+import os
 
 def detect_columns():
     """Detect available columns in the metadata file"""
     print("🔍 Detecting available columns...")
     try:
         # Read just the first row to get column names
-        sample_df = pd.read_csv('metadata.csv', nrows=1)
+        sample_df = pd.read_csv('data/metadata.csv', nrows=1)
         available_columns = sample_df.columns.tolist()
         print(f"✅ Found {len(available_columns)} columns")
         return available_columns
@@ -33,13 +34,13 @@ def load_and_explore_data():
     
     # Load the data with available columns
     try:
-        df = pd.read_csv('metadata.csv', usecols=available_columns, low_memory=False)
+        df = pd.read_csv('data/metadata.csv', usecols=available_columns, low_memory=False)
         print("✅ Data loaded successfully!")
     except Exception as e:
         print(f"❌ Error loading data: {e}")
         # Fallback: try without specifying columns
         try:
-            df = pd.read_csv('metadata.csv', low_memory=False)
+            df = pd.read_csv('data/metadata.csv', low_memory=False)
             print("✅ Data loaded with fallback method")
         except Exception as e2:
             print(f"❌ Failed to load data: {e2}")
@@ -270,19 +271,20 @@ def main():
     print("\n🚀 Starting complete analysis...")
     
     results = {}
-    results['yearly_counts'] = analyze_publication_trends(df_clean)
-    results['top_journals'] = analyze_journals(df_clean)
-    results['word_frequencies'] = analyze_titles(df_clean)
-    results['abstract_stats'] = analyze_abstracts(df_clean)
+    from src.analysis import analysis_visualization
+    results['yearly_counts'] = analysis_visualization.analyze_publication_trends(df_clean)
+    results['top_journals'] = analysis_visualization.analyze_journals(df_clean)
+    results['word_frequencies'] = analysis_visualization.analyze_titles(df_clean)
+    results['abstract_stats'] = analysis_visualization.analyze_abstracts(df_clean)
     
     # Step 4: Save cleaned data
     try:
-        df_clean.to_parquet('cleaned_metadata.parquet', index=False)
-        print("💾 Cleaned data saved as 'cleaned_metadata.parquet'")
+        df_clean.to_parquet('data/cleaned_metadata.parquet', index=False)
+        print("💾 Cleaned data saved as 'data/cleaned_metadata.parquet'")
     except Exception as e:
         print(f"⚠️  Could not save as parquet: {e}")
-        df_clean.to_csv('cleaned_metadata.csv', index=False)
-        print("💾 Cleaned data saved as 'cleaned_metadata.csv'")
+        df_clean.to_csv('data/cleaned_metadata.csv', index=False)
+        print("💾 Cleaned data saved as 'data/cleaned_metadata.csv'")
     
     # Step 5: Generate summary report
     generate_summary_report(df_clean, results)
@@ -294,7 +296,7 @@ def main():
     print("1. Run the Streamlit app: streamlit run app_optimized.py")
     print("2. Explore interactive visualizations")
     print("3. Check the generated PNG files for static charts")
-    print("4. Use cleaned_metadata.parquet for faster future analysis")
+    print("4. Use data/cleaned_metadata.parquet for faster future analysis")
 
 if __name__ == "__main__":
     main()
