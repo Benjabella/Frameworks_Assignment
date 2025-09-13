@@ -1,38 +1,75 @@
-# CORD-19 COVID-19 Research Data Analysis
+# CORD-19 COVID-19 Research Data Explorer
 
-## Overview
-This project analyzes the CORD-19 dataset metadata to uncover patterns and trends in COVID-19 research publications. The analysis includes publication trends, journal distribution, and title word frequency analysis.
+## 📖 Project Description
+This project analyzes the COVID-19 Open Research Dataset (CORD-19) to uncover trends in scientific publications during the pandemic. It includes:
+- Batch processing for data cleaning and analysis
+- Interactive web application for data exploration
+- Automated visualization generation
 
-## Features
-- Data loading and exploration
-- Data cleaning and preparation
-- Publication trend analysis
-- Journal distribution analysis
+## ✨ Features
+- Publication trend analysis by year/month
+- Journal distribution statistics
 - Title word frequency analysis
-- Interactive Streamlit web application
+- Abstract presence and length metrics
+- Interactive filtering and data sampling
+- Static visualizations for reports
 
-## Installation
+## ⚙️ Installation
 1. Clone this repository
-2. Install required packages:
-   ```bash
-   pip install -r requirements.txt
-3. Download `metadata.csv` from the [CORD-19 dataset](https://www.kaggle.com/datasets/batprem/cord-19-metadata) and place it in the project directory.
+2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-## Usage
-1. Run the complete analysis:
-    ```bash
-    python main.py
-2. Launch the Streamlit app:
-    ```bash
-    streamlit run app.py
+## 🚀 Usage
+### Batch Processing (Generate Reports & Visualizations)
+```bash
+python main.py
+```
+Generates:
+- Publication trend charts
+- Journal distribution plots
+- Word frequency analysis
+- Data quality reports
 
-## File Structure
+### Interactive Web Application
+```bash
+streamlit run app.py
+```
+Launch a web-based dashboard with:
+- Dynamic filters
+- Interactive visualizations
+- Data sampling
+- Export capabilities
 
-├── main.py                 # Main execution script
-├── data_exploration.py     # Data loading and exploration
-├── data_cleaning.py        # Data cleaning functions
-├── analysis_visualization.py # Analysis and visualization functions
-├── app.py                  # Streamlit web application
-├── requirements.txt        # Python dependencies
-└── README.md              # Project documentation
+## 📂 File Structure
+| File | Purpose |
+|------|---------|
+| `app.py` | Streamlit web application |
+| `main.py` | Batch processing and analysis |
+| `data_cleaning.py` | Data cleaning utilities |
+| `preprocess_data.py` | Data preprocessing pipeline |
+| `analysis_visualization.py` | Visualization functions |
+| `requirements.txt` | Python dependencies |
 
+## 📊 Generated Visualizations
+1. `publications_by_year.png` - Annual publication trends
+2. `top_journals.png` - Top publishing journals
+3. `top_title_words.png` - Most frequent title words
+4. `abstract_length_distribution.png` - Abstract word count distribution
+5. `abstract_presence.png` - Papers with/without abstracts
+6. `sources_distribution.png` - Data source distribution
+
+## 📦 Dependencies
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- streamlit
+- wordcloud
+- altair
+- requests
+- scikit-learn
+- python-dateutil
+
+Full list in `requirements.txt`
