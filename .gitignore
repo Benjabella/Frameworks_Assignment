@@ -1,0 +1,14 @@
+# Python Virtual Environments
+venv/
+ENV/
+env/
+.venv/
+cord_env/
+pip-selfcheck.json
+
+# Bytecode / Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
